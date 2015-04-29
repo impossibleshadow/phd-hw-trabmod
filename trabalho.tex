@@ -1,3 +1,5 @@
+%% TODO: incluir tabela de unidades (fluxo e tempo)
+%% TODO: incluir parâmetros da tese (bom momento para citar)
 \documentclass[
 	% -- opções da classe memoir --
 	12pt,				% tamanho da fonte
@@ -335,15 +337,18 @@ social possui $N$ usuários cadastrados, aptos a receber e transmitir
 informação. Deste modo, $N$ representa a população total que
 possibilitará a transmissão da informação.
 
-Conforme determinada informação passa a ser veiculada na rede social,
-estes $N$ usuários passam a ser divididos por grupos, a saber, o grupo
-dos usuários suscetíveis ($S$) que são aqueles que tiveram contato
-direto ou indireto com a informação, dos infectados ($I$) que são
-aqueles que receberam e acessaram a informação e podem ou não
-compartilhá-la; e dos recuperados ($R$) que são aqueles que foram
-infectados e podem ou não acessar novamente a mesma informação. Cada
-um destes grupos é dividido em outros dois nomeados receptivos e
-resistentes. Deste modo, tem-se os seguintes grupos e suas descrições:
+Neste trabalho utilizamos o modelo epidemiológico
+SIR\cite{hethcote2000}, fazendo uma analogia entre a transmissão de
+uma doença e o compartilhamento de uma informação.  Assim, conforme
+determinada informação passa a ser veiculada na rede social, estes $N$
+usuários passam a ser divididos por grupos, a saber, o grupo dos
+usuários suscetíveis ($S$) que são aqueles que tiveram contato direto
+ou indireto com a informação, dos infectados ($I$) que são aqueles que
+receberam e acessaram a informação e podem ou não compartilhá-la; e
+dos recuperados ($R$) que são aqueles que foram infectados e podem ou
+não acessar novamente a mesma informação. Cada um destes grupos é
+dividido em outros dois nomeados receptivos e resistentes. Deste modo,
+tem-se os seguintes grupos e suas descrições:
 
 \begin{itemize}
 \item $S_1$: suscetível-receptivo - usuário que teve contato direto com a informação;
@@ -401,7 +406,7 @@ grupo $I_1$ representa o conjunto dos usuários que são mais
 receptíveis à informação e também possuem maior capacidade de
 compartilhamento desta. No grupo $I_2$ estão os usuários com menor
 capacidade ou interesse em difundi-las e assim não compartilham a
-informação.
+informação\cite{pachi2006}.
 
 
 \chapter{Modelo Matemático}
@@ -456,28 +461,31 @@ Dessa forma, com base nos modelos epidemiológicos já existentes na
 literatura e nas observações feitas anteriormente, propomos o seguinte
 modelo para a propagação de informação em uma rede social:
 
-\begin{align}
+\begin{equation*}
+  \left\{ \begin{aligned}
   \frac{dS_1}{dt} &= (1-p)\pi N - \frac{\beta_1 S_1 I_1}{N} - \frac{\beta_3 S_1 I_2}{N} - \mu S_1 \nonumber \\
   \frac{dS_2}{dt} &= p\pi N - \frac{\beta_4 S_2 I_2}{N} - \frac{\beta_2 S_2 I_1}{N} - \mu S_2 \nonumber \\
   \frac{dI_1}{dt} &= \frac{\beta_1 S_1 I_1}{N} + \frac{\beta_3 S_1 I_2}{N} - (\gamma_1 + \mu)I_1 \nonumber \\
   \frac{dI_2}{dt} &= \frac{\beta_4 S_2 I_2}{N} + \frac{\beta_2 S_2 I_1}{N} - (\gamma_2 + \mu)I_2 \nonumber \\
   \frac{dR_1}{dt} &= \gamma_1 I_1 - \mu R_1 \nonumber \\
   \frac{dR_2}{dt} &= \gamma_2 I_2 - \mu R_2 \nonumber
-\end{align}
-
-\grifar{Alternativa com agrupamento por chave (reduz as fontes das frações ):}
-\begin{align}
-  \left\{
-  \begin{array}{lll}
-  \frac{dS_1}{dt} & = & (1-p)\pi N - \frac{\beta_1 S_1 I_1}{N} - \frac{\beta_3 S_1 I_2}{N} - \mu S_1 \\
-  \frac{dS_2}{dt} & = & p\pi N - \frac{\beta_4 S_2 I_2}{N} - \frac{\beta_2 S_2 I_1}{N} - \mu S_2 \\
-  \frac{dI_1}{dt} & = & \frac{\beta_1 S_1 I_1}{N} + \frac{\beta_3 S_1 I_2}{N} - (\gamma_1 + \mu)I_1 \\
-  \frac{dI_2}{dt} & = & \frac{\beta_4 S_2 I_2}{N} + \frac{\beta_2 S_2 I_1}{N} - (\gamma_2 + \mu)I_2 \\
-  \frac{dR_1}{dt} & = & \gamma_1 I_1 - \mu R_1 \\
-  \frac{dR_2}{dt} & = & \gamma_2 I_2 - \mu R_2
-  \end{array} \nonumber
+  \end{aligned}
   \right.
-\end{align}
+\end{equation*}
+
+%% \grifar{Alternativa com agrupamento por chave (reduz as fontes das frações ):}
+%% \begin{align}
+%%   \left\{
+%%   \begin{array}{lll}
+%%   \frac{dS_1}{dt} & = & (1-p)\pi N - \frac{\beta_1 S_1 I_1}{N} - \frac{\beta_3 S_1 I_2}{N} - \mu S_1 \\
+%%   \frac{dS_2}{dt} & = & p\pi N - \frac{\beta_4 S_2 I_2}{N} - \frac{\beta_2 S_2 I_1}{N} - \mu S_2 \\
+%%   \frac{dI_1}{dt} & = & \frac{\beta_1 S_1 I_1}{N} + \frac{\beta_3 S_1 I_2}{N} - (\gamma_1 + \mu)I_1 \\
+%%   \frac{dI_2}{dt} & = & \frac{\beta_4 S_2 I_2}{N} + \frac{\beta_2 S_2 I_1}{N} - (\gamma_2 + \mu)I_2 \\
+%%   \frac{dR_1}{dt} & = & \gamma_1 I_1 - \mu R_1 \\
+%%   \frac{dR_2}{dt} & = & \gamma_2 I_2 - \mu R_2
+%%   \end{array} \nonumber
+%%   \right.
+%% \end{align}
 
 As condições iniciais para o modelo são:
 
@@ -500,17 +508,94 @@ rede, o que é condizente com o cenário real de uma rede social.
 
 
 \chapter{Solução do Modelo Matemático}
+A epidemiologia matemática é um campo de estudo já estabelecido e com
+sólida formalização matemática, geralmente associada a resolução de
+equações diferencias ordinárias (EDO) e seus respectivos métodos
+numéricos.  A resolução analítica de modelos SIR é possível para
+sistemas mais simples, com reduzido número de equações e que
+geralmente são utilizados para fins
+didáticos\cite{santos2012}. Contudo, o modelo proposto na seção
+anterior trata-se de um sistema de equações diferenciais ordinárias de
+primeira ordem não lineares.  Para este tipo de sistema, quanto mais
+equações o sistema apresenta, mais complexa e árdua pode se tornar a
+sua resolução. Em contraste com a situação para um sistema linear, a
+existência e unicidade de solução para um sistema linear não é
+garantida \cite{boyce2003,zill2003}.
+
+Devido ao exposto no parágrafo anterior, para encontrar a trajetória
+de um modelo de tempo contínuo, tal como o SIR, integra-se as equações
+numericamente, ou seja, aproxima-se as soluções do sistema
+computacionalmente.
+
+Diferentes técnicas podem ser empregadas para a resolução de sistemas
+de equações diferenciais ordinárias não lineares. Um dos métodos mais
+conhecidos e utilizados para a resolução deste tipo de sistema é o
+Método de Runge-Kutta multidimensioal. \emph{Softwares} como o
+\emph{Python}, \emph{Matlab} e \emph{R} já dispõem de rotinas que
+resolvem equações diferenciais ordinárias não lineares e sistemas de
+equações deste mesmo tipo. Tais rotinas são chamadas,
+\emph{rungek4v.py}, \emph{ode45} e \emph{LSODA}, respectivamente.
+
+Contudo, encontram-se outros métodos em trabalhos que tratam da
+solução numérica do modelo SIR, a saber, o Método da Transformação
+Diferencial (MTD) e o Método da Iteração Variacional (MIV). As
+principais vantagens do MTD é que ele pode ser aplicado diretamente a
+EDO's não lineares sem a exigência de linearização, discretização ou
+perturbação, além de ser capaz de reduzir significativamente o
+trabalho computacional com alta precisão nos cálculos, fornecendo a
+solução da série com taxa de convergência rápida. Já o MIV, por sua
+vez, não requer uma transformação específica para termos não lineares,
+como acontece para outros métodos numéricos e a solução é dada em uma
+série infinita geralmente convergente para a solução com boa
+acurácia\cite{akinboro2014}.
 
 
 \chapter{Críticas}
-Um anúncio publicitário, uma imagem, um texto e um vídeo são
+Neste trabalho não estamos considerando a existência de mais de um
+tipo de conteúdo, ou seja, mais de uma categoria de informação.  Um
+anúncio publicitário, uma imagem, um texto e um vídeo são
 representações diferentes de informações: diferem no formato, na
 linguagem e no estilo, pois buscam transmitir ideias diferentes e
 atingir públicos diferentes, mas têm o mesmo propósito, informar algo
-a alguém. Neste sentido, compreende-se que não há diferença alguma em
-modelar a propagação de uma notícia na forma de vídeo, um boato
-(também chamado de rumor) na forma de figura ou uma opinião na forma
-de texto numa rede social.
+a alguém.  Sendo assim, é uma limitação deste modelo não tratar a
+diferença entre os diversos tipos de informação.
+
+Ademais, o modelo aqui proposto considera apenas uma rede social,
+enquanto, na realidade os usuários costumam compartilhar a mesma
+informação em diversas redes sociais.  Além disso, existem mecanismos
+de interligação entre as redes, o que permite aos usuários
+compartilhar a mesma informação em várias redes com facilidade.
+
+Em um cenário real, cada usuário possui determinada influência sobre
+outros usuários no momento em que compartilha uma informação.  Dessa
+maneira, as informações compartilhadas por este usuário podem chegar a
+mais ou menos usuários, propagando-se de forma assimétrica pelas
+diferentes regiões do grafo que representa a rede social.  Sendo
+assim, é também uma limitação do modelo proposto considerar que a
+informação se propaga de forma homogênea no grafo.
+
+Outra característica importante no processo de propagação da
+informação em redes sociais, não tratada pelo modelo, é o
+\emph{horário} no qual o usuário a compartilha.  Por exemplo, aos
+finais de semana, há uma quantidade maior de usuários conectados à
+rede, o que também acontece em diferentes períodos do dia ao decorrer
+da semana.  Dessa forma, pode-se otimizar a propagação da informação
+ao selecionar horários com uma maior quantidade de usuários conectados
+à rede.
+
+Apesar de simplificado, o modelo proposto consegue captar
+aspectos realísticos, observados em uma rede social, como:
+
+\begin{itemize}
+\item nem todo usuário infectado compartilha a informação, podendo o
+  usuário acessar a informação, tomando conhecimento dela, mas não
+  a compartilhando com outros usuários
+\item um usuário recuperado pode se tornar novamente suscetível e
+  infectado, o que simula a situação na qual um usuário compartilha a
+  mesma informação mais de uma vez em uma rede social, após um período
+  de tempo, correspondente às taxas de esquecimento $\gamma_1$ e
+  $\gamma_2$.
+\end{itemize}
 
 
 % ----------------------------------------------------------
