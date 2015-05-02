@@ -535,18 +535,18 @@ resolvem equações diferenciais ordinárias não lineares e sistemas de
 equações deste mesmo tipo. Tais rotinas são chamadas,
 \emph{rungek4v.py}, \emph{ode45} e \emph{LSODA}, respectivamente.
 
-Contudo, encontram-se outros métodos em trabalhos que tratam da
-solução numérica do modelo SIR, a saber, o Método da Transformação
-Diferencial (MTD) e o Método da Iteração Variacional (MIV). As
-principais vantagens do MTD é que ele pode ser aplicado diretamente a
-EDO's não lineares sem a exigência de linearização, discretização ou
-perturbação, além de ser capaz de reduzir significativamente o
-trabalho computacional com alta precisão nos cálculos, fornecendo a
-solução da série com taxa de convergência rápida. Já o MIV, por sua
-vez, não requer uma transformação específica para termos não lineares,
-como acontece para outros métodos numéricos e a solução é dada em uma
-série infinita geralmente convergente para a solução com boa
-acurácia~\cite{akinboro2014}.
+Contudo, outros métodos de resolução podem ser encontrados em
+trabalhos que tratam da solução numérica do modelo SIR, a saber, o
+Método da Transformação Diferencial (MTD) e o Método da Iteração
+Variacional (MIV). As principais vantagens do MTD é que ele pode ser
+aplicado diretamente a EDO's não lineares sem a exigência de
+linearização, discretização ou perturbação, além de ser capaz de
+reduzir significativamente o trabalho computacional com alta precisão
+nos cálculos, fornecendo a solução da série com taxa de convergência
+rápida. Já o MIV, por sua vez, não requer uma transformação específica
+para termos não lineares, como acontece para outros métodos numéricos
+e a solução é dada em uma série infinita geralmente convergente para a
+solução com boa acurácia~\cite{akinboro2014}.
 
 
 \chapter{Críticas}
@@ -560,7 +560,7 @@ a alguém.  Sendo assim, é uma limitação deste modelo não tratar a
 diferença entre os diversos tipos de informação.
 
 Ademais, o modelo aqui proposto considera apenas uma rede social,
-enquanto, na realidade os usuários costumam compartilhar a mesma
+enquanto na realidade os usuários costumam compartilhar a mesma
 informação em diversas redes sociais.  Além disso, existem mecanismos
 de interligação entre as redes, o que permite aos usuários
 compartilhar a mesma informação em várias redes com facilidade.
@@ -592,8 +592,8 @@ aspectos realísticos, observados em uma rede social, como:
 \item um usuário recuperado pode se tornar novamente suscetível e
   infectado, o que simula a situação na qual um usuário compartilha a
   mesma informação mais de uma vez em uma rede social, após um período
-  de tempo, correspondente às taxas de esquecimento $\gamma_1$ e
-  $\gamma_2$.
+  de tempo, sendo isto possível no modelo em virtude das taxas de
+  esquecimento $\gamma_1$ e $\gamma_2$.
 \end{itemize}
 
 
